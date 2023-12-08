@@ -33,16 +33,27 @@ public class Cutter : MonoBehaviour
 
         if (yourTag == "Enemy")
         {
-            score += 1;
+            AddScore();
         }
         if (yourTag == "NotEnemy")
         {
-            score -= 1;
-            if(score<=0)
-            {
-                score = 0;
-            }
+            SubScore();
         }
 
+    }
+
+    public void AddScore()
+    {
+        score++;
+        Debug.Log("score="+score);
+    }
+
+    public void SubScore()
+    {
+        score --;
+        if (score <= 0)
+        {
+            score = 0;
+        }
     }
 }

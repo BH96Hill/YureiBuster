@@ -17,8 +17,6 @@ public class SelectObake : MonoBehaviour
     //  ラウンドごとに待機時間を変える
     float fluctuateNum;
 
-    int round;
-
     public FadeOutSceneLoader fadeOutSceneLoader;
     // Start is called before the first frame update
     void Start()
@@ -47,6 +45,7 @@ public class SelectObake : MonoBehaviour
         GameObject obakejanai5 = GameObject.Find("obakejanai5");
         GameObject obakejanai6 = GameObject.Find("obakejanai6");
         GameObject obakejanai7 = GameObject.Find("obakejanai7");
+        GameObject bombObject = GameObject.Find("bombObject");
 
 
         if (playTimer <= 60.0f && playTimer > 50.0f)
@@ -316,6 +315,20 @@ public class SelectObake : MonoBehaviour
                             }
                         }
                         break;
+                    case 7:
+                        if (bombObject != null)
+                        {
+                            //  obake7上のスクリプトへの参照を取得
+                            Bomb bomb = bombObject.GetComponent<Bomb>();
+                            if (bomb != null)
+                            {
+                                //  moveのmoveFlagTriggerを呼び出す
+                                bomb.moveFlagTrigger();
+                                bomb.ChangeLimit(playTimer);
+                                waitTime = fluctuateNum;
+                            }
+                        }
+                        break;
                 }
             }
         }
@@ -323,7 +336,8 @@ public class SelectObake : MonoBehaviour
 
     void Shuffle()
     {
-        randomNo = Random.Range(0, 7);
+        randomNo = Random.Range(0, 8);
+        Debug.Log(randomNo);
     }
 
     void ProbabilityMachine()

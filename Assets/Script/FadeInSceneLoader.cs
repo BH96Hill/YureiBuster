@@ -14,7 +14,6 @@ public class FadeIn : MonoBehaviour
 
     void FadeInAnimation()
     {
-        Debug.Log("test");
         fadeImage.CrossFadeAlpha(0.0f, fadeInTime, false);
     }
 }
