@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class NewMeshCut : MonoBehaviour
+public class MeshCutLeft : MonoBehaviour
 {
     static Mesh _targetMesh;
     static Vector3[] _targetVertices;

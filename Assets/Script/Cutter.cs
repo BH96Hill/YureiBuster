@@ -21,7 +21,7 @@ public class Cutter : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         var meshCut = other.gameObject.GetComponent<MeshCut>();
-        var newMeshCut = other.gameObject.GetComponent<NewMeshCut>();
+//        var newMeshCut = other.gameObject.GetComponent<NewMeshCut>();
         if (meshCut == null) { return; }
         //一方向のみで切断する方法、方向については適宜変更
         var cutPlane = new Plane(transform.right, transform.position);
@@ -30,8 +30,11 @@ public class Cutter : MonoBehaviour
         meshCut.Cut(cutPlane);
 
         string yourTag = other.gameObject.tag;
+        string thistag = this.gameObject.tag;
 
-        if (yourTag == "Enemy")
+
+        if (yourTag == "LeftEnemy" ||
+            yourTag == "RightEnemy")
         {
             score += 1;
         }

@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Move : MonoBehaviour
+
+public class MoveRight : MonoBehaviour
 {
     public float nowPosi;
 
@@ -76,12 +77,12 @@ public class Move : MonoBehaviour
             transform.position += transform.TransformDirection(Vector3.forward) * 0f * Time.deltaTime;
         }
 
-        if(respawnFlag)
+        if (respawnFlag)
         {
             float timer = 0.5f;
             while (timer <= 0.0f)
             {
-                
+
                 timer -= Time.deltaTime;
             }
             gameObject.transform.position = originalPos;
@@ -129,15 +130,11 @@ public class Move : MonoBehaviour
             moveFlag = false;
             gameObject.SetActive(true);
         }
-        if (yourTag == "LeftSword" ||
-            yourTag == "RightSword")
-        {   
+        if (yourTag == "RightSword")
+        {
             backTrigger = false;
             respawnFlag = true;
         }
 
     }
-
 }
-
-
