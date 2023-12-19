@@ -13,6 +13,7 @@ TagManager:
   - NotEnemy
   - Sword
   - BombRadius
+  - flame
   layers:
   - Default
   - TransparentFX

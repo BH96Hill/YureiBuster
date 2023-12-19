@@ -16,6 +16,7 @@ public class SelectObake : MonoBehaviour
 
     //  ラウンドごとに待機時間を変える
     float fluctuateNum;
+    bool bombCheck = false;
 
     public FadeOutSceneLoader fadeOutSceneLoader;
     // Start is called before the first frame update
@@ -314,18 +315,24 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
+                      
                         break;
                     case 7:
                         if (bombObject != null)
                         {
-                            //  obake7上のスクリプトへの参照を取得
-                            Bomb bomb = bombObject.GetComponent<Bomb>();
-                            if (bomb != null)
+                            
+                            if(!bombCheck)
                             {
-                                //  moveのmoveFlagTriggerを呼び出す
-                                bomb.moveFlagTrigger();
-                                bomb.ChangeLimit(playTimer);
-                                waitTime = fluctuateNum;
+                                //  obake7上のスクリプトへの参照を取得
+                                Bomb bomb = bombObject.GetComponent<Bomb>();
+                                if (bomb != null)
+                                {
+                                    //  moveのmoveFlagTriggerを呼び出す
+                                    bomb.moveFlagTrigger();
+                                    bomb.ChangeLimit(playTimer);
+                                    waitTime = fluctuateNum;
+                                    bombCheck = true;
+                                }
                             }
                         }
                         break;
