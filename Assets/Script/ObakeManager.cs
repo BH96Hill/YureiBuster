@@ -6,6 +6,7 @@ public class SelectObake : MonoBehaviour
 {
     //  おばけの種類の乱数
     int randomNo;
+    int probabilityNo;
     //  斬っていいおばけと斬っちゃいけないおばけの確率
     bool probabilityFlag;
     //  おばけが交互に出る時間
@@ -46,7 +47,14 @@ public class SelectObake : MonoBehaviour
         GameObject obakejanai5 = GameObject.Find("obakejanai5");
         GameObject obakejanai6 = GameObject.Find("obakejanai6");
         GameObject obakejanai7 = GameObject.Find("obakejanai7");
-        GameObject bombObject = GameObject.Find("bombObject");
+
+        GameObject bombObject1 = GameObject.Find("bombObject1");
+        GameObject bombObject2 = GameObject.Find("bombObject2");
+        GameObject bombObject3 = GameObject.Find("bombObject3");
+        GameObject bombObject4 = GameObject.Find("bombObject4");
+        GameObject bombObject5 = GameObject.Find("bombObject5");
+        GameObject bombObject6 = GameObject.Find("bombObject6");
+        GameObject bombObject7 = GameObject.Find("bombObject7");
 
 
         if (playTimer <= 60.0f && playTimer > 50.0f)
@@ -81,7 +89,7 @@ public class SelectObake : MonoBehaviour
                 {
                     case 0:
                         ProbabilityMachine();
-                        if (!probabilityFlag)
+                        if (probabilityNo<=6&&probabilityNo>9)
                         {
                             if (obakejanai1 != null)
                             {
@@ -96,7 +104,7 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else
+                        else if(probabilityNo <=5)
                         {
                             if (obake1 != null)
                             {
@@ -111,16 +119,35 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
+                        else
+                        {
+                            if (bombObject1 != null)
+                            {
+                                if (!bombCheck)
+                                {
+                                    //  bomb上のスクリプトへの参照を取得
+                                    Bomb bomb = bombObject1.GetComponent<Bomb>();
+                                    if (bomb != null)
+                                    {
+                                        //  moveのmoveFlagTriggerを呼び出す
+                                        bomb.moveFlagTrigger();
+                                        bomb.ChangeLimit(playTimer);
+                                        waitTime = fluctuateNum;
+                                        bombCheck = true;
+                                    }
+                                }
+                            }
+                        }
 
                         break;
 
                     case 1:
                         ProbabilityMachine();
-                        if (!probabilityFlag)
+                        if (probabilityNo <= 6 && probabilityNo > 9)
                         {
                             if (obakejanai2 != null)
                             {
-                                //  obakejanai2上のスクリプトへの参照を取得
+                                //  obake3上のスクリプトへの参照を取得
                                 Move move = obakejanai2.GetComponent<Move>();
                                 if (move != null)
                                 {
@@ -131,11 +158,11 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else
+                        else if (probabilityNo <= 5)
                         {
                             if (obake2 != null)
                             {
-                                //  obake2上のスクリプトへの参照を取得
+                                //  obake1上のスクリプトへの参照を取得
                                 Move move = obake2.GetComponent<Move>();
                                 if (move != null)
                                 {
@@ -146,16 +173,35 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
+                        else
+                        {
+                            if (bombObject2 != null)
+                            {
+                                if (!bombCheck)
+                                {
+                                    //  bomb上のスクリプトへの参照を取得
+                                    Bomb bomb = bombObject2.GetComponent<Bomb>();
+                                    if (bomb != null)
+                                    {
+                                        //  moveのmoveFlagTriggerを呼び出す
+                                        bomb.moveFlagTrigger();
+                                        bomb.ChangeLimit(playTimer);
+                                        waitTime = fluctuateNum;
+                                        bombCheck = true;
+                                    }
+                                }
+                            }
+                        }
 
                         break;
 
                     case 2:
                         ProbabilityMachine();
-                        if (!probabilityFlag)
+                        if (probabilityNo <= 6 && probabilityNo > 9)
                         {
                             if (obakejanai3 != null)
                             {
-                                //  obakejanai3上のスクリプトへの参照を取得
+                                //  obake3上のスクリプトへの参照を取得
                                 Move move = obakejanai3.GetComponent<Move>();
                                 if (move != null)
                                 {
@@ -166,11 +212,11 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else
+                        else if (probabilityNo <= 5)
                         {
                             if (obake3 != null)
                             {
-                                //  obake3上のスクリプトへの参照を取得
+                                //  obake1上のスクリプトへの参照を取得
                                 Move move = obake3.GetComponent<Move>();
                                 if (move != null)
                                 {
@@ -181,15 +227,34 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
+                        else
+                        {
+                            if (bombObject3 != null)
+                            {
+                                if (!bombCheck)
+                                {
+                                    //  bomb上のスクリプトへの参照を取得
+                                    Bomb bomb = bombObject3.GetComponent<Bomb>();
+                                    if (bomb != null)
+                                    {
+                                        //  moveのmoveFlagTriggerを呼び出す
+                                        bomb.moveFlagTrigger();
+                                        bomb.ChangeLimit(playTimer);
+                                        waitTime = fluctuateNum;
+                                        bombCheck = true;
+                                    }
+                                }
+                            }
+                        }
 
                         break;
                     case 3:
                         ProbabilityMachine();
-                        if (!probabilityFlag)
+                        if (probabilityNo <= 6 && probabilityNo > 9)
                         {
                             if (obakejanai4 != null)
                             {
-                                //  obakejanai4上のスクリプトへの参照を取得
+                                //  obake3上のスクリプトへの参照を取得
                                 Move move = obakejanai4.GetComponent<Move>();
                                 if (move != null)
                                 {
@@ -200,11 +265,11 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else
+                        else if (probabilityNo <= 5)
                         {
                             if (obake4 != null)
                             {
-                                //  obake4上のスクリプトへの参照を取得
+                                //  obake1上のスクリプトへの参照を取得
                                 Move move = obake4.GetComponent<Move>();
                                 if (move != null)
                                 {
@@ -215,15 +280,34 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
+                        else
+                        {
+                            if (bombObject4 != null)
+                            {
+                                if (!bombCheck)
+                                {
+                                    //  bomb上のスクリプトへの参照を取得
+                                    Bomb bomb = bombObject4.GetComponent<Bomb>();
+                                    if (bomb != null)
+                                    {
+                                        //  moveのmoveFlagTriggerを呼び出す
+                                        bomb.moveFlagTrigger();
+                                        bomb.ChangeLimit(playTimer);
+                                        waitTime = fluctuateNum;
+                                        bombCheck = true;
+                                    }
+                                }
+                            }
+                        }
 
                         break;
                     case 4:
                         ProbabilityMachine();
-                        if (!probabilityFlag)
+                        if (probabilityNo <= 6 && probabilityNo > 9)
                         {
                             if (obakejanai5 != null)
                             {
-                                //  obakejanai5上のスクリプトへの参照を取得
+                                //  obake3上のスクリプトへの参照を取得
                                 Move move = obakejanai5.GetComponent<Move>();
                                 if (move != null)
                                 {
@@ -234,11 +318,11 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else
+                        else if (probabilityNo <= 5)
                         {
                             if (obake5 != null)
                             {
-                                //  obake5上のスクリプトへの参照を取得
+                                //  obake1上のスクリプトへの参照を取得
                                 Move move = obake5.GetComponent<Move>();
                                 if (move != null)
                                 {
@@ -249,14 +333,34 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
+                        else
+                        {
+                            if (bombObject5 != null)
+                            {
+                                if (!bombCheck)
+                                {
+                                    //  bomb上のスクリプトへの参照を取得
+                                    Bomb bomb = bombObject5.GetComponent<Bomb>();
+                                    if (bomb != null)
+                                    {
+                                        //  moveのmoveFlagTriggerを呼び出す
+                                        bomb.moveFlagTrigger();
+                                        bomb.ChangeLimit(playTimer);
+                                        waitTime = fluctuateNum;
+                                        bombCheck = true;
+                                    }
+                                }
+                            }
+                        }
+
                         break;
                     case 5:
                         ProbabilityMachine();
-                        if (!probabilityFlag)
+                        if (probabilityNo <= 6 && probabilityNo > 9)
                         {
                             if (obakejanai6 != null)
                             {
-                                //  obakejanai6上のスクリプトへの参照を取得
+                                //  obake3上のスクリプトへの参照を取得
                                 Move move = obakejanai6.GetComponent<Move>();
                                 if (move != null)
                                 {
@@ -267,11 +371,11 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else
+                        else if (probabilityNo <= 5)
                         {
                             if (obake6 != null)
                             {
-                                //  obake6上のスクリプトへの参照を取得
+                                //  obake1上のスクリプトへの参照を取得
                                 Move move = obake6.GetComponent<Move>();
                                 if (move != null)
                                 {
@@ -282,15 +386,50 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
+                        else
+                        {
+                            if (bombObject6 != null)
+                            {
+                                if (!bombCheck)
+                                {
+                                    //  bomb上のスクリプトへの参照を取得
+                                    Bomb bomb = bombObject6.GetComponent<Bomb>();
+                                    if (bomb != null)
+                                    {
+                                        //  moveのmoveFlagTriggerを呼び出す
+                                        bomb.moveFlagTrigger();
+                                        bomb.ChangeLimit(playTimer);
+                                        waitTime = fluctuateNum;
+                                        bombCheck = true;
+                                    }
+                                }
+                            }
+                        }
+
                         break;
                     case 6:
                         ProbabilityMachine();
-                        if (!probabilityFlag)
+                        if (probabilityNo <= 6 && probabilityNo > 9)
                         {
                             if (obakejanai7 != null)
                             {
-                                //  obakejanai7上のスクリプトへの参照を取得
+                                //  obake3上のスクリプトへの参照を取得
                                 Move move = obakejanai7.GetComponent<Move>();
+                                if (move != null)
+                                {
+                                    //  moveのmoveFlagTriggerを呼び出す
+                                    move.moveFlagTrigger();
+                                    move.ChangeLimit(playTimer);
+                                    waitTime = fluctuateNum;
+                                }
+                            }
+                        }
+                        else if (probabilityNo <= 5)
+                        {
+                            if (obake7 != null)
+                            {
+                                //  obake1上のスクリプトへの参照を取得
+                                Move move = obake7.GetComponent<Move>();
                                 if (move != null)
                                 {
                                     //  moveのmoveFlagTriggerを呼び出す
@@ -302,39 +441,24 @@ public class SelectObake : MonoBehaviour
                         }
                         else
                         {
-                            if (obake7 != null)
+                            if (bombObject7 != null)
                             {
-                                //  obake7上のスクリプトへの参照を取得
-                                Move move = obake7.GetComponent<Move>();
-                                if (move != null)
+                                if (!bombCheck)
                                 {
-                                    //  moveのmoveFlagTriggerを呼び出す
-                                    move.moveFlagTrigger();
-                                    move.ChangeLimit(playTimer);
-                                    waitTime = fluctuateNum;
+                                    //  bomb上のスクリプトへの参照を取得
+                                    Bomb bomb = bombObject7.GetComponent<Bomb>();
+                                    if (bomb != null)
+                                    {
+                                        //  moveのmoveFlagTriggerを呼び出す
+                                        bomb.moveFlagTrigger();
+                                        bomb.ChangeLimit(playTimer);
+                                        waitTime = fluctuateNum;
+                                        bombCheck = true;
+                                    }
                                 }
                             }
                         }
-                      
-                        break;
-                    case 7:
-                        if (bombObject != null)
-                        {
-                            
-                            if(!bombCheck)
-                            {
-                                //  obake7上のスクリプトへの参照を取得
-                                Bomb bomb = bombObject.GetComponent<Bomb>();
-                                if (bomb != null)
-                                {
-                                    //  moveのmoveFlagTriggerを呼び出す
-                                    bomb.moveFlagTrigger();
-                                    bomb.ChangeLimit(playTimer);
-                                    waitTime = fluctuateNum;
-                                    bombCheck = true;
-                                }
-                            }
-                        }
+
                         break;
                 }
             }
@@ -343,21 +467,12 @@ public class SelectObake : MonoBehaviour
 
     void Shuffle()
     {
-        randomNo = Random.Range(0, 8);
+        randomNo = Random.Range(0, 7);
         Debug.Log(randomNo);
     }
 
     void ProbabilityMachine()
     {
-        int x = Random.Range(0, 5);
-        //  5か4だったら斬っちゃいけないおばけを出現させる
-        if (x >= 4)
-        {
-            probabilityFlag = false;
-        }
-        else
-        {
-            probabilityFlag = true;
-        }
+        probabilityNo = Random.Range(0, 11);
     }
 }
