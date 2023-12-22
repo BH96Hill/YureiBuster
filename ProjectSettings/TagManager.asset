@@ -12,10 +12,8 @@ TagManager:
   - Enemy
   - NotEnemy
   - Sword
-  - LeftSword
-  - RightSword
-  - LeftEnemy
-  - RightEnemy
+  - BombRadius
+  - flame
   layers:
   - Default
   - TransparentFX
@@ -23,10 +21,10 @@ TagManager:
   - 
   - Water
   - UI
-  - Left
-  - Right
   - Player
   - Item
+  - 
+  - 
   - 
   - 
   - 

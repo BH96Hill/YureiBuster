@@ -85,7 +85,6 @@ public class Move : MonoBehaviour
                 timer -= Time.deltaTime;
             }
             gameObject.transform.position = originalPos;
-            Debug.Log("test");
             respawnFlag = false;
         }
 
@@ -129,8 +128,7 @@ public class Move : MonoBehaviour
             moveFlag = false;
             gameObject.SetActive(true);
         }
-        if (yourTag == "LeftSword" ||
-            yourTag == "RightSword")
+        if (yourTag == "Sword"||yourTag=="BombRadius")
         {   
             backTrigger = false;
             respawnFlag = true;
