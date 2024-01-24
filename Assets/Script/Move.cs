@@ -133,9 +133,7 @@ public class Move : MonoBehaviour
             backTrigger = false;
             respawnFlag = true;
         }
-
     }
-
 }
 
 

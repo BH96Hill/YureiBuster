@@ -7,6 +7,8 @@ public class SelectObake : MonoBehaviour
     //  おばけの種類の乱数
     int randomNo;
     int probabilityNo;
+    int probabilityNoMin=2;
+    int probabilityNoMax=11;
     //  斬っていいおばけと斬っちゃいけないおばけの確率
     bool probabilityFlag;
     //  おばけが交互に出る時間
@@ -17,7 +19,7 @@ public class SelectObake : MonoBehaviour
 
     //  ラウンドごとに待機時間を変える
     float fluctuateNum;
-    bool bombCheck = false;
+    int bombCheck = 0;
 
     public FadeOutSceneLoader fadeOutSceneLoader;
     // Start is called before the first frame update
@@ -68,6 +70,7 @@ public class SelectObake : MonoBehaviour
         if (playTimer <= 40.0f && playTimer > 20.0f)
         {
             fluctuateNum = 2.0f;
+            probabilityNoMin = 0;
         }
         if (playTimer <= 20.0f && playTimer > 0.0f)
         {
@@ -88,8 +91,8 @@ public class SelectObake : MonoBehaviour
                 switch (randomNo)
                 {
                     case 0:
-                        ProbabilityMachine();
-                        if (probabilityNo<=6&&probabilityNo>9)
+                        ProbabilityMachine(probabilityNoMin,probabilityNoMax);
+                        if (probabilityNo >= 8 && probabilityNo < 11)
                         {
                             if (obakejanai1 != null)
                             {
@@ -104,7 +107,7 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else if(probabilityNo <=5)
+                        else if (probabilityNo <= 7 && probabilityNo > 1)
                         {
                             if (obake1 != null)
                             {
@@ -123,7 +126,7 @@ public class SelectObake : MonoBehaviour
                         {
                             if (bombObject1 != null)
                             {
-                                if (!bombCheck)
+                                if (bombCheck > 3)
                                 {
                                     //  bomb上のスクリプトへの参照を取得
                                     Bomb bomb = bombObject1.GetComponent<Bomb>();
@@ -132,9 +135,14 @@ public class SelectObake : MonoBehaviour
                                         //  moveのmoveFlagTriggerを呼び出す
                                         bomb.moveFlagTrigger();
                                         bomb.ChangeLimit(playTimer);
+                                        bombCheck++;
                                         waitTime = fluctuateNum;
-                                        bombCheck = true;
+
                                     }
+                                }
+                                if (bombCheck == 3)
+                                {
+                                    Destroy(bombObject1);
                                 }
                             }
                         }
@@ -142,8 +150,8 @@ public class SelectObake : MonoBehaviour
                         break;
 
                     case 1:
-                        ProbabilityMachine();
-                        if (probabilityNo <= 6 && probabilityNo > 9)
+                        ProbabilityMachine(probabilityNoMin, probabilityNoMax);
+                        if (probabilityNo >= 8 && probabilityNo < 11)
                         {
                             if (obakejanai2 != null)
                             {
@@ -158,7 +166,7 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else if (probabilityNo <= 5)
+                        else if (probabilityNo <= 7 && probabilityNo > 1)
                         {
                             if (obake2 != null)
                             {
@@ -177,7 +185,7 @@ public class SelectObake : MonoBehaviour
                         {
                             if (bombObject2 != null)
                             {
-                                if (!bombCheck)
+                                if (bombCheck < 3)
                                 {
                                     //  bomb上のスクリプトへの参照を取得
                                     Bomb bomb = bombObject2.GetComponent<Bomb>();
@@ -186,9 +194,14 @@ public class SelectObake : MonoBehaviour
                                         //  moveのmoveFlagTriggerを呼び出す
                                         bomb.moveFlagTrigger();
                                         bomb.ChangeLimit(playTimer);
+                                        bombCheck++;
                                         waitTime = fluctuateNum;
-                                        bombCheck = true;
+
                                     }
+                                }
+                                if (bombCheck == 3)
+                                {
+                                    Destroy(bombObject2);
                                 }
                             }
                         }
@@ -196,8 +209,8 @@ public class SelectObake : MonoBehaviour
                         break;
 
                     case 2:
-                        ProbabilityMachine();
-                        if (probabilityNo <= 6 && probabilityNo > 9)
+                        ProbabilityMachine(probabilityNoMin, probabilityNoMax);
+                        if (probabilityNo >= 8 && probabilityNo < 11)
                         {
                             if (obakejanai3 != null)
                             {
@@ -212,7 +225,7 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else if (probabilityNo <= 5)
+                        else if (probabilityNo <= 7 && probabilityNo > 1)
                         {
                             if (obake3 != null)
                             {
@@ -231,7 +244,7 @@ public class SelectObake : MonoBehaviour
                         {
                             if (bombObject3 != null)
                             {
-                                if (!bombCheck)
+                                if (bombCheck < 3)
                                 {
                                     //  bomb上のスクリプトへの参照を取得
                                     Bomb bomb = bombObject3.GetComponent<Bomb>();
@@ -240,17 +253,22 @@ public class SelectObake : MonoBehaviour
                                         //  moveのmoveFlagTriggerを呼び出す
                                         bomb.moveFlagTrigger();
                                         bomb.ChangeLimit(playTimer);
+                                        bombCheck++;
                                         waitTime = fluctuateNum;
-                                        bombCheck = true;
+
                                     }
+                                }
+                                if (bombCheck == 3)
+                                {
+                                    Destroy(bombObject3);
                                 }
                             }
                         }
 
                         break;
                     case 3:
-                        ProbabilityMachine();
-                        if (probabilityNo <= 6 && probabilityNo > 9)
+                        ProbabilityMachine(probabilityNoMin, probabilityNoMax);
+                        if (probabilityNo >= 8 && probabilityNo < 11)
                         {
                             if (obakejanai4 != null)
                             {
@@ -265,7 +283,7 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else if (probabilityNo <= 5)
+                        else if (probabilityNo <= 7 && probabilityNo > 1)
                         {
                             if (obake4 != null)
                             {
@@ -284,7 +302,7 @@ public class SelectObake : MonoBehaviour
                         {
                             if (bombObject4 != null)
                             {
-                                if (!bombCheck)
+                                if (bombCheck < 3)
                                 {
                                     //  bomb上のスクリプトへの参照を取得
                                     Bomb bomb = bombObject4.GetComponent<Bomb>();
@@ -293,17 +311,22 @@ public class SelectObake : MonoBehaviour
                                         //  moveのmoveFlagTriggerを呼び出す
                                         bomb.moveFlagTrigger();
                                         bomb.ChangeLimit(playTimer);
+                                        bombCheck++;
                                         waitTime = fluctuateNum;
-                                        bombCheck = true;
+
                                     }
+                                }
+                                if (bombCheck == 3)
+                                {
+                                    Destroy(bombObject4);
                                 }
                             }
                         }
 
                         break;
                     case 4:
-                        ProbabilityMachine();
-                        if (probabilityNo <= 6 && probabilityNo > 9)
+                        ProbabilityMachine(probabilityNoMin, probabilityNoMax);
+                        if (probabilityNo >= 8 && probabilityNo < 11)
                         {
                             if (obakejanai5 != null)
                             {
@@ -318,7 +341,7 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else if (probabilityNo <= 5)
+                        else if (probabilityNo <= 7 && probabilityNo > 1)
                         {
                             if (obake5 != null)
                             {
@@ -337,7 +360,7 @@ public class SelectObake : MonoBehaviour
                         {
                             if (bombObject5 != null)
                             {
-                                if (!bombCheck)
+                                if (bombCheck < 3)
                                 {
                                     //  bomb上のスクリプトへの参照を取得
                                     Bomb bomb = bombObject5.GetComponent<Bomb>();
@@ -346,17 +369,22 @@ public class SelectObake : MonoBehaviour
                                         //  moveのmoveFlagTriggerを呼び出す
                                         bomb.moveFlagTrigger();
                                         bomb.ChangeLimit(playTimer);
+                                        bombCheck++;
                                         waitTime = fluctuateNum;
-                                        bombCheck = true;
+
                                     }
+                                }
+                                if (bombCheck == 3)
+                                {
+                                    Destroy(bombObject5);
                                 }
                             }
                         }
 
                         break;
                     case 5:
-                        ProbabilityMachine();
-                        if (probabilityNo <= 6 && probabilityNo > 9)
+                        ProbabilityMachine(probabilityNoMin, probabilityNoMax);
+                        if (probabilityNo >= 8 && probabilityNo < 11)
                         {
                             if (obakejanai6 != null)
                             {
@@ -371,7 +399,7 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else if (probabilityNo <= 5)
+                        else if (probabilityNo <= 7 && probabilityNo > 1)
                         {
                             if (obake6 != null)
                             {
@@ -390,7 +418,7 @@ public class SelectObake : MonoBehaviour
                         {
                             if (bombObject6 != null)
                             {
-                                if (!bombCheck)
+                                if (bombCheck < 3)
                                 {
                                     //  bomb上のスクリプトへの参照を取得
                                     Bomb bomb = bombObject6.GetComponent<Bomb>();
@@ -399,17 +427,22 @@ public class SelectObake : MonoBehaviour
                                         //  moveのmoveFlagTriggerを呼び出す
                                         bomb.moveFlagTrigger();
                                         bomb.ChangeLimit(playTimer);
+                                        bombCheck++;
                                         waitTime = fluctuateNum;
-                                        bombCheck = true;
+
                                     }
+                                }
+                                if (bombCheck == 3)
+                                {
+                                    Destroy(bombObject6);
                                 }
                             }
                         }
 
                         break;
                     case 6:
-                        ProbabilityMachine();
-                        if (probabilityNo <= 6 && probabilityNo > 9)
+                        ProbabilityMachine(probabilityNoMin, probabilityNoMax);
+                        if (probabilityNo >= 8 && probabilityNo < 11)
                         {
                             if (obakejanai7 != null)
                             {
@@ -424,7 +457,7 @@ public class SelectObake : MonoBehaviour
                                 }
                             }
                         }
-                        else if (probabilityNo <= 5)
+                        else if (probabilityNo <= 7 && probabilityNo > 1)
                         {
                             if (obake7 != null)
                             {
@@ -443,7 +476,7 @@ public class SelectObake : MonoBehaviour
                         {
                             if (bombObject7 != null)
                             {
-                                if (!bombCheck)
+                                if (bombCheck < 3)
                                 {
                                     //  bomb上のスクリプトへの参照を取得
                                     Bomb bomb = bombObject7.GetComponent<Bomb>();
@@ -452,9 +485,14 @@ public class SelectObake : MonoBehaviour
                                         //  moveのmoveFlagTriggerを呼び出す
                                         bomb.moveFlagTrigger();
                                         bomb.ChangeLimit(playTimer);
+                                        bombCheck++;
                                         waitTime = fluctuateNum;
-                                        bombCheck = true;
+
                                     }
+                                }
+                                if(bombCheck==3)
+                                {
+                                    Destroy(bombObject7);
                                 }
                             }
                         }
@@ -471,8 +509,9 @@ public class SelectObake : MonoBehaviour
         Debug.Log(randomNo);
     }
 
-    void ProbabilityMachine()
+    void ProbabilityMachine(int min,int max)
     {
-        probabilityNo = Random.Range(0, 11);
+        probabilityNo = Random.Range(min, max);
+        Debug.Log(probabilityNo);
     }
 }
